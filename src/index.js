@@ -26,8 +26,6 @@ function form(event) {
 
   let apiKey = "1a46c2ddb4f23a0843f1e06f7ae609ee";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${apiKey}&units=metric`;
-  console.log(apiKey);
-  console.log(apiUrl);
 
   axios.get(apiUrl).then(showTemp);
 }
