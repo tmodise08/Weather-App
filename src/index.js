@@ -40,5 +40,6 @@ click.addEventListener("submit", form);
 
 function showTemp(response) {
   let h4 = document.querySelector("h4");
-  h4.innerHTML = `${response.data.main.temp}℃`;
+  let temp = Math.round(response.data.main.temp);
+  h4.innerHTML = `${temp}℃`;
 }
