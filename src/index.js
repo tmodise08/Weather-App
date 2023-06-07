@@ -43,6 +43,12 @@ function showTemp(response) {
   let h4 = document.querySelector("h4");
   let temp = Math.round(response.data.main.temp);
   let description = document.querySelector("#description");
+  let humidity = document.querySelector("#humidity");
+  let wind = document.querySelector("#wind");
+  let cloud = document.querySelector("#cloud");
   h4.innerHTML = `${temp}℃`;
   description.innerHTML = response.data.weather[0].description;
+  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  wind.innerHTML = `Wind speed: ${response.data.wind.speed} m/s`;
+  cloud.innerHTML = `${response.data.clouds.all}% Cloudiness`;
 }
