@@ -1,4 +1,4 @@
-body {
-  font-family: sans-serif;
-  background-color: blueviolet;
+.weather-app {
+  max-width: 500px;
+  border: 2px solid #dfcaca76;
 }
