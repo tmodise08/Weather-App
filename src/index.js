@@ -25,18 +25,19 @@ h2.innerHTML = `${day} ${time}:${minutes}`;
 
 function form(event) {
   event.preventDefault();
+  let input = document.querySelector(".input");
   let h3 = document.querySelector("h3");
-  h3.innerHTML = input.value.toUpperCase();
+
+  search(input.value);
 }
 
 function search(input) {
-  let input = document.querySelector(".input");
   let apiKey = "1a46c2ddb4f23a0843f1e06f7ae609ee";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(showTemp);
 }
-search("Johannesburg");
+search("johannesburg");
 let click = document.querySelector("form");
 
 click.addEventListener("submit", form);
