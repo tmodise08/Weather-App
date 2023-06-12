@@ -1,12 +1,12 @@
-.weather-app {
-  max-width: 500px;
-  border: 2px solid #dfcaca76;
-}
 #description {
   text-transform: capitalize;
 }
 
 body {
   background: bisque;
-  margin-top: 20px;
+  margin-top: 50px;
+}
+.card {
+  margin: auto;
+  background-color: #ffffff66;
 }
