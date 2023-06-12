@@ -5,3 +5,8 @@
 #description {
   text-transform: capitalize;
 }
+
+body {
+  background: bisque;
+  margin-top: 20px;
+}
