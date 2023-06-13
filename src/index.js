@@ -27,17 +27,20 @@ function form(event) {
   event.preventDefault();
   let input = document.querySelector(".input");
   let h3 = document.querySelector("h3");
+  h3.innerHTML = input.value.toUpperCase();
 
   search(input.value);
 }
+search("johannesburg");
 
 function search(input) {
   let apiKey = "1a46c2ddb4f23a0843f1e06f7ae609ee";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
 
   axios.get(apiUrl).then(showTemp);
 }
-search("johannesburg");
+
 let click = document.querySelector("form");
 
 click.addEventListener("submit", form);
@@ -56,6 +59,5 @@ function showTemp(response) {
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind speed: ${response.data.wind.speed} m/s`;
   cloud.innerHTML = `${response.data.clouds.all}  % Cloudiness`;
-  img.setAttribute =
-    ("src", `https://openweathermap.org/img/wn/${icon}@2x.png`);
+  img.setAttribute("src", `https://openweathermap.org/img/wn/${icon}@2x.png`);
 }
