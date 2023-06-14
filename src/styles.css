@@ -10,3 +10,7 @@ body {
   margin: auto;
   background-color: #ffffff66;
 }
+a {
+  text-decoration: none;
+  font-size: 17px;
+}

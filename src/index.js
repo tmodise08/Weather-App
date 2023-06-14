@@ -54,10 +54,23 @@ function showTemp(response) {
   let cloud = document.querySelector("#cloud");
   let icon = response.data.weather[0].icon;
   let img = document.querySelector("#img");
-  h4.innerHTML = `${temp}℃`;
+  h4.innerHTML = `${temp}`;
   description.innerHTML = response.data.weather[0].description;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind speed: ${response.data.wind.speed} m/s`;
   cloud.innerHTML = `${response.data.clouds.all}  % Cloudiness`;
   img.setAttribute("src", `https://openweathermap.org/img/wn/${icon}@2x.png`);
 }
+
+function changeDegree(event) {
+  event.preventDefault();
+  let temp = Math.round(response.data.main.temp);
+  h4.innerHTML = `${temp}`;
+
+  let calculate = Math.round(h4.innerHTML * 9) / 5 + 32;
+  fahrenheit.innerHTML = calculate;
+}
+
+let fahrenheit = document.querySelector(".link");
+fahrenheit.addEventListener("click", changeDegree);
+changeDegree();
