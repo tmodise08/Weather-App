@@ -10,7 +10,7 @@ body {
   margin: auto;
   background-color: #ffffff66;
   padding: 20px;
-  max-width: 1000px;
+  max-width: 1200px;
 }
 
 a {
@@ -21,6 +21,9 @@ a {
   border-radius: 5px;
   border: 1px solid;
 }
-.col-2 {
-  border-color: blue;
+.cardImage {
+  max-width: 80px;
+}
+.cardTitle {
+  font-size: 10px;
 }
