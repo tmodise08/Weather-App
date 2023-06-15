@@ -44,9 +44,10 @@ function search(input) {
 let click = document.querySelector("form");
 
 click.addEventListener("submit", form);
-
+let celsiusTemperature = null;
 function showTemp(response) {
   let h4 = document.querySelector("h4");
+  celsiusTemperature = Math.round(response.data.main.temp);
   let temp = Math.round(response.data.main.temp);
   let description = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
@@ -64,11 +65,10 @@ function showTemp(response) {
 
 function changeDegree(event) {
   event.preventDefault();
-  let temp = Math.round(response.data.main.temp);
-  h4.innerHTML = `${temp}`;
+  let h4 = document.querySelector("h4");
 
   let calculate = Math.round(h4.innerHTML * 9) / 5 + 32;
-  fahrenheit.innerHTML = calculate;
+  h4.innerHTML = calculate;
 }
 
 let fahrenheit = document.querySelector(".link");

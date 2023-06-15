@@ -10,8 +10,9 @@ body {
   margin: auto;
   background-color: #ffffff66;
   padding: 20px;
-  max-width: 500px;
+  max-width: 1000px;
 }
+
 a {
   text-decoration: none;
   font-size: 17px;
@@ -19,4 +20,7 @@ a {
 .search {
   border-radius: 5px;
   border: 1px solid;
+}
+.col-2 {
+  border-color: blue;
 }
