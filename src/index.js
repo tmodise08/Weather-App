@@ -32,12 +32,10 @@ function form(event) {
   search(input.value);
 }
 search("johannesburg");
-showForecast();
 
 function search(input) {
   let apiKey = "1a46c2ddb4f23a0843f1e06f7ae609ee";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
 
   axios.get(apiUrl).then(showTemp);
 }
@@ -46,6 +44,15 @@ let click = document.querySelector("form");
 
 click.addEventListener("submit", form);
 let celsiusTemperature = null;
+
+function forecastCoords(coordinates) {
+  console.log(coordinates);
+  let apiKey = "1a46c2ddb4f23a0843f1e06f7ae609ee";
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(showForecast);
+}
+showForecast();
 function showTemp(response) {
   let h4 = document.querySelector("h4");
   celsiusTemperature = Math.round(response.data.main.temp);
@@ -62,6 +69,9 @@ function showTemp(response) {
   wind.innerHTML = `Wind speed: ${response.data.wind.speed} m/s`;
   cloud.innerHTML = `${response.data.clouds.all}  % Cloudiness`;
   img.setAttribute("src", `https://openweathermap.org/img/wn/${icon}@2x.png`);
+  console.log(response.data);
+
+  forecastCoords(response.data.coord);
 }
 
 function changeDegree(event) {
@@ -76,10 +86,10 @@ let fahrenheit = document.querySelector(".link");
 fahrenheit.addEventListener("click", changeDegree);
 changeDegree();
 
-function showForecast() {
+function showForecast(response) {
   let forecast = document.querySelector("#cardRow");
-  let forecastHTML = `<div class="row">`;
   let days = ["Sat", "Sun", "Mon"];
+  let forecastHTML = `<div class="row">`;
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
