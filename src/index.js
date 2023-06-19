@@ -47,11 +47,11 @@ let celsiusTemperature = null;
 
 function forecastCoords(coordinates) {
   let apiKey = "ffef30738ae0dab8014c9284ct83eo91";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.longitude}&lat=${coordinates.latitude}}&key=${apiKey}}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.longitude}&lat=${coordinates.latitude}}&key=${apiKey}}&units=metric`;
   console.log(apiUrl);
   axios.get(apiUrl).then(showForecast);
 }
-showForecast();
+
 function showTemp(response) {
   let h4 = document.querySelector("h4");
   celsiusTemperature = Math.round(response.data.temperature.current);
@@ -89,6 +89,7 @@ fahrenheit.addEventListener("click", changeDegree);
 changeDegree();
 
 function showForecast(response) {
+  console.log(response.data.daily);
   let forecast = document.querySelector("#cardRow");
   let days = ["Sat", "Sun", "Mon"];
   let forecastHTML = `<div class="row">`;
