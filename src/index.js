@@ -34,8 +34,8 @@ function form(event) {
 search("johannesburg");
 
 function search(input) {
-  let apiKey = "1a46c2ddb4f23a0843f1e06f7ae609ee";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=metric`;
+  let apiKey = "ffef30738ae0dab8014c9284ct83eo91";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${input}&key=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(showTemp);
 }
@@ -46,32 +46,34 @@ click.addEventListener("submit", form);
 let celsiusTemperature = null;
 
 function forecastCoords(coordinates) {
-  console.log(coordinates);
-  let apiKey = "1a46c2ddb4f23a0843f1e06f7ae609ee";
-  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiKey = "ffef30738ae0dab8014c9284ct83eo91";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.longitude}&lat=${coordinates.latitude}}&key=${apiKey}}`;
   console.log(apiUrl);
   axios.get(apiUrl).then(showForecast);
 }
 showForecast();
 function showTemp(response) {
   let h4 = document.querySelector("h4");
-  celsiusTemperature = Math.round(response.data.main.temp);
-  let temp = Math.round(response.data.main.temp);
+  celsiusTemperature = Math.round(response.data.temperature.current);
+  let temp = Math.round(response.data.temperature.current);
   let description = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
-  let cloud = document.querySelector("#cloud");
-  let icon = response.data.weather[0].icon;
+  let feels = document.querySelector("#feels");
+  let icon = response.data.condition.icon;
   let img = document.querySelector("#img");
+  let feelsLike = Math.round(response.data.temperature.feels_like);
   h4.innerHTML = `${temp}`;
-  description.innerHTML = response.data.weather[0].description;
-  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  description.innerHTML = response.data.condition.description;
+  humidity.innerHTML = `Humidity: ${response.data.temperature.humidity}%`;
   wind.innerHTML = `Wind speed: ${response.data.wind.speed} m/s`;
-  cloud.innerHTML = `${response.data.clouds.all}  % Cloudiness`;
-  img.setAttribute("src", `https://openweathermap.org/img/wn/${icon}@2x.png`);
-  console.log(response.data);
+  feels.innerHTML = `It feels like ${feelsLike}℃ today `;
+  img.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
+  );
 
-  forecastCoords(response.data.coord);
+  forecastCoords(response.data.coordinates);
 }
 
 function changeDegree(event) {

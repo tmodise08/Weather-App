@@ -13,7 +13,7 @@ body {
   max-width: 1200px;
 }
 
-a {
+.footer {
   text-decoration: none;
   font-size: 10px;
   color: #0000f766;
@@ -31,4 +31,11 @@ a {
 h6 {
   color: #05040266;
   font-size: 10px;
+}
+.link {
+  text-decoration: none;
+}
+#feels {
+  color: #05040266;
+  font-style: italic;
 }
