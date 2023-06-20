@@ -32,6 +32,7 @@ function form(event) {
   search(input.value);
 }
 search("johannesburg");
+showForecast();
 
 function search(input) {
   let apiKey = "ffef30738ae0dab8014c9284ct83eo91";
@@ -46,6 +47,7 @@ click.addEventListener("submit", form);
 let celsiusTemperature = null;
 
 function forecastCoords(coordinates) {
+  console.log(coordinates);
   let apiKey = "ffef30738ae0dab8014c9284ct83eo91";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.longitude}&lat=${coordinates.latitude}}&key=${apiKey}}&units=metric`;
   console.log(apiUrl);
@@ -67,7 +69,7 @@ function showTemp(response) {
   description.innerHTML = response.data.condition.description;
   humidity.innerHTML = `Humidity: ${response.data.temperature.humidity}%`;
   wind.innerHTML = `Wind speed: ${response.data.wind.speed} m/s`;
-  feels.innerHTML = `It feels like ${feelsLike}℃ today `;
+  feels.innerHTML = `This weather feels like ${feelsLike}℃ `;
   img.setAttribute(
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
@@ -89,7 +91,7 @@ fahrenheit.addEventListener("click", changeDegree);
 changeDegree();
 
 function showForecast(response) {
-  console.log(response.data.daily);
+  console.log(response);
   let forecast = document.querySelector("#cardRow");
   let days = ["Sat", "Sun", "Mon"];
   let forecastHTML = `<div class="row">`;
