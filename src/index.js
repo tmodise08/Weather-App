@@ -48,7 +48,7 @@ let celsiusTemperature = null;
 function forecastCoords(coordinates) {
   console.log(coordinates);
   let apiKey = "ffef30738ae0dab8014c9284ct83eo91";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.longitude}&lat=${coordinates.latitude}}&key=${apiKey}}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
   console.log(apiUrl);
   axios.get(apiUrl).then(showForecast);
 }
@@ -76,7 +76,6 @@ function showTemp(response) {
 
   forecastCoords(response.data.coordinates);
 }
-showForecast();
 
 function changeDegree(event) {
   event.preventDefault();
@@ -91,6 +90,13 @@ fahrenheit.addEventListener("click", changeDegree);
 
 changeDegree();
 
+function showDays(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 function showForecast(response) {
   let dailyForecast = response.data.daily;
   let forecast = document.querySelector("#cardRow");
@@ -102,9 +108,13 @@ function showForecast(response) {
       ` 
         <div class="col-2">
           <div class="card" style="width: 5rem">
-            <h5 class= "cardTitle">${forecastDay.daily[3].time}</h5>
-            <img class ="cardImage" src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.daily[0].condition.icon}.png">
-            <h6>${forecastDay.daily[1].temperature.maximum}/${forecastDay.daily[1].temperature.minimum}</h6>
+            <h5 class= "cardTitle">${showDays(forecastDay.time)}</h5>
+            <img class ="cardImage" src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+              forecastDay.condition.icon
+            }.png">
+            <h6>${Math.round(forecastDay.temperature.maximum)}°/${Math.round(
+        forecastDay.temperature.minimum
+      )}°</h6>
           </div>
           </div>
           `;
