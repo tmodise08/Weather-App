@@ -102,10 +102,11 @@ function showForecast(response) {
   let forecast = document.querySelector("#cardRow");
 
   let forecastHTML = `<div class="row">`;
-  dailyForecast.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      ` 
+  dailyForecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        ` 
         <div class="col-2">
           <div class="card" style="width: 5rem">
             <h5 class= "cardTitle">${showDays(forecastDay.time)}</h5>
@@ -113,11 +114,12 @@ function showForecast(response) {
               forecastDay.condition.icon
             }.png">
             <h6>${Math.round(forecastDay.temperature.maximum)}°/${Math.round(
-        forecastDay.temperature.minimum
-      )}°</h6>
+          forecastDay.temperature.minimum
+        )}°</h6>
           </div>
           </div>
           `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div`;
