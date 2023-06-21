@@ -2,20 +2,28 @@
   text-transform: capitalize;
 }
 
-body {
-  background: bisque;
-  margin-top: 50px;
+#video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }
 .card {
+  margin-top: 40px;
   margin: auto;
   background-color: #ffffff66;
   padding: 20px;
-  max-width: 1200px;
+  max-width: 500px;
 }
 
 .footer {
   text-decoration: none;
-  font-size: 10px;
+  font-size: 15px;
   color: #0000f766;
 }
 .search {
