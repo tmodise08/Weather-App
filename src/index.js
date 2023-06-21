@@ -77,18 +77,27 @@ function showTemp(response) {
   forecastCoords(response.data.coordinates);
 }
 
-function changeDegree(event) {
+function changeFdegree(event) {
   event.preventDefault();
   let h4 = document.querySelector("h4");
 
-  let calculate = Math.round(h4.innerHTML * 9) / 5 + 32;
+  let calculate = Math.round(celsiusTemperature * 9) / 5 + 32;
   h4.innerHTML = calculate;
 }
+function changeCdegree(event) {
+  event.preventDefault();
+  let h4 = document.querySelector("h4");
 
+  h4.innerHTML = celsiusTemperature;
+}
 let fahrenheit = document.querySelector(".link");
-fahrenheit.addEventListener("click", changeDegree);
+fahrenheit.addEventListener("click", changeFdegree);
 
-changeDegree();
+let celsius = document.querySelector(".cLink");
+celsius.addEventListener("click", changeCdegree);
+
+changeFdegree();
+changeCdegree();
 
 function showDays(timestamp) {
   let date = new Date(timestamp * 1000);

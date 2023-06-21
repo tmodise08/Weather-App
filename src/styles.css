@@ -35,6 +35,10 @@ h6 {
 .link {
   text-decoration: none;
 }
+.cLink {
+  text-decoration: none;
+  cursor: pointer;
+}
 #feels {
   color: #05040266;
   font-style: italic;
