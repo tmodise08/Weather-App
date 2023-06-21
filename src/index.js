@@ -15,6 +15,7 @@ let time = now.getHours();
 if (time < 10) {
   time = `0${time}`;
 }
+
 let minutes = now.getMinutes();
 if (minutes < 10) {
   minutes = `0${minutes}`;
@@ -76,7 +77,9 @@ function showTemp(response) {
 
   forecastCoords(response.data.coordinates);
 }
-
+if (time < 18) {
+  video.setAttribute("src", "src/day.mp4");
+}
 function changeFdegree(event) {
   event.preventDefault();
   let h4 = document.querySelector("h4");
