@@ -77,8 +77,8 @@ function showTemp(response) {
 
   forecastCoords(response.data.coordinates);
 }
-if (time < 18) {
-  video.setAttribute("src", `src/day.mp4`);
+if (now.getHours() < 18) {
+  video.setAttribute("src", `day.mp4`);
 }
 function changeFdegree(event) {
   event.preventDefault();
