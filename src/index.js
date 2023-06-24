@@ -78,7 +78,7 @@ function showTemp(response) {
   forecastCoords(response.data.coordinates);
 }
 if (now.getHours() < 18) {
-  video.setAttribute("src", `day.mp4`);
+  document.querySelector("#video").setAttribute("src", `src/day.mp4`);
 }
 function changeFdegree(event) {
   event.preventDefault();
@@ -98,9 +98,6 @@ fahrenheit.addEventListener("click", changeFdegree);
 
 let celsius = document.querySelector(".cLink");
 celsius.addEventListener("click", changeCdegree);
-
-changeFdegree();
-changeCdegree();
 
 function showDays(timestamp) {
   let date = new Date(timestamp * 1000);
